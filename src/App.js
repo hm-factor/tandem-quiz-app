@@ -6,13 +6,13 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [begin, setBegin] = useState(false);
   const [count, setCount] = useState(0);
+  const [end, setEnd] = useState(false);
 
   useEffect(() => {
     console.log(questions)
   }, [questions]);
 
   const tenRandQuestions = [];
-
 
   function selectQuestions() {
     while (tenRandQuestions.length < 10) {
@@ -26,15 +26,20 @@ function App() {
     selectQuestions();
     setQuestions(tenRandQuestions);
     setBegin(true);
+    setEnd(false);
   };
 
   function handleAnswer() {
-    setCount(count => count + 1)
+    setCount(count => count + 1);
+    if (count === 9) {
+      setEnd(true);
+      setBegin(false);
+    };
   }
 
-  if (begin) {
-    let currData = data[questions[count]];
+  let currData = data[questions[count]];
 
+  if (begin && currData) {
     return (
       <div className="App">
         <h1 className="question-item">{currData.question}</h1>
@@ -46,7 +51,14 @@ function App() {
         </div>
       </div>
     );
-  } else {
+  } else if (end) {
+    return (
+      <div className="App">
+        <h1>Congrats you win</h1>
+        <button onClick={handleBegin}>Play Again?</button>
+      </div>
+    )
+  } else if (!begin) {
     return (
       <div className="App">
         <button className="begin" onClick={handleBegin}>Begin Quiz</button>
