@@ -5,15 +5,17 @@ import { useState, useEffect } from 'react';
 function App() {
   const [questions, setQuestions] = useState([]);
   const [begin, setBegin] = useState(false);
-
-  const tenRandQuestions = [];
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     console.log(questions)
   }, [questions]);
 
+  const tenRandQuestions = [];
+
+
   function selectQuestions() {
-    while (tenRandQuestions.length < data.length) {
+    while (tenRandQuestions.length < 10) {
       let rand = Math.floor(Math.random() * Math.floor(data.length));
 
       if (!tenRandQuestions.includes(rand)) tenRandQuestions.push(rand);
@@ -26,15 +28,21 @@ function App() {
     setBegin(true);
   };
 
+  function handleAnswer() {
+    setCount(count => count + 1)
+  }
+
   if (begin) {
+    let currData = data[questions[count]];
+
     return (
       <div className="App">
-        <h1 className="question-item">{data[0].question}</h1>
+        <h1 className="question-item">{currData.question}</h1>
         <div className="answers-grid">
-          <button className="answer-item">{data[0].correct}</button>
-          <button className="answer-item">{data[0].incorrect[0]}</button>
-          <button className="answer-item">{data[0].incorrect[1]}</button>
-          <button className="answer-item">{data[0].incorrect[2]}</button>
+          <button onClick={handleAnswer} className="answer-item">{currData.correct}</button>
+          <button onClick={handleAnswer} className="answer-item">{currData.incorrect[0]}</button>
+          <button onClick={handleAnswer} className="answer-item">{currData.incorrect[1]}</button>
+          <button onClick={handleAnswer} className="answer-item">{currData.incorrect[2]}</button>
         </div>
       </div>
     );
