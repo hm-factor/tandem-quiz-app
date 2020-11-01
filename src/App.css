@@ -6,6 +6,6 @@
   align-items: center;
 }
 
-.answers-container {
+.answers-grid {
   display: grid;
 }
