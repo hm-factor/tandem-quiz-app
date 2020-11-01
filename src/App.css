@@ -6,6 +6,28 @@
   align-items: center;
 }
 
+.question-item {
+  display: flex;
+  justify-self: center;
+}
+
 .answers-grid {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+}
+
+.answer-item {
+  transition: linear 0.2s;
+  background-color: transparent;
+  border: 1px solid thistle;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.answer-item:hover {
+  transition: linear 0.2s;
+  background-color: thistle;
 }
