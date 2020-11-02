@@ -26,6 +26,7 @@ function App() {
     selectQuestions();
     setQuestions(tenRandQuestions);
     setCount(0);
+    setScore(0);
     setBegin(true);
     setEnd(false);
  }
@@ -84,13 +85,14 @@ function App() {
           {answerItems}
           <button className={`next-button ${style ? 'on' : 'off'}`} onClick={handleAnswer}>Next Question</button>
         </div>
+        <div className="score">{`${score}/10`}</div>
       </div>
     );
   } else if (end) {
     return (
       <div className="App">
         <h1>You got {score} out of 10 questions correct!</h1>
-        <button onClick={handleRestart}>Play Again?</button>
+        <button className="restart-button" onClick={handleRestart}>Play Again?</button>
       </div>
     )
   } else if (!begin) {

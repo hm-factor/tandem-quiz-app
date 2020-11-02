@@ -26,6 +26,7 @@
 .question-item {
   display: flex;
   justify-self: center;
+  text-align: center;
   font-family: 'EB Garamond'
 }
 
@@ -34,7 +35,7 @@
   flex-direction: column;
 }
 
-.answer-item, .next-button {
+.answer-item, .next-button, .restart-button {
   transition: linear 0.2s;
   background-color: transparent;
   border-radius: 10px;
@@ -44,12 +45,12 @@
   outline: none;
   font-family: 'EB Garamond'
 }
-.answer-item:hover, .next-button:hover {
+.answer-item:hover, .next-button:hover, .restart-button:hover {
   transition: linear 0.2s;
   background-color: thistle;
 }
 
-.next-button {
+.next-button, .restart-button {
   border: 1px solid thistle;
 }
 
@@ -68,4 +69,9 @@
 }
 .off {
   display: none;
+}
+
+.score {
+  display: fixed;
+  bottom: 0;
 }
