@@ -1,6 +1,7 @@
 import './app.css';
 import data from './data.json';
 import { useState, useEffect } from 'react';
+import AnswerItem from './components/AnswerItem';
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -40,14 +41,20 @@ function App() {
   let currData = data[questions[count]];
 
   if (begin && currData) {
+
+    let possibleAnswers = [...currData.incorrect, currData.correct];
+
+    let answerItems = possibleAnswers.map( (data, idx) => {
+      return (
+        <AnswerItem key={idx} data={data} onClick={handleAnswer}/>
+      )
+    });
+
     return (
       <div className="App">
         <h1 className="question-item">{currData.question}</h1>
         <div className="answers-grid">
-          <button onClick={handleAnswer} className="answer-item">{currData.correct}</button>
-          <button onClick={handleAnswer} className="answer-item">{currData.incorrect[0]}</button>
-          <button onClick={handleAnswer} className="answer-item">{currData.incorrect[1]}</button>
-          <button onClick={handleAnswer} className="answer-item">{currData.incorrect[2]}</button>
+          {answerItems}
         </div>
       </div>
     );
@@ -55,7 +62,7 @@ function App() {
     return (
       <div className="App">
         <h1>Congrats you win</h1>
-        <button onClick={handleBegin}>Play Again?</button>
+        {/* <button onClick={handleBegin}>Play Again?</button> */}
       </div>
     )
   } else if (!begin) {
@@ -63,6 +70,10 @@ function App() {
       <div className="App">
         <button className="begin" onClick={handleBegin}>Begin Quiz</button>
       </div>
+    )
+  } else {
+    return (
+      <div className="App">Loading...</div>
     )
   }
 }
