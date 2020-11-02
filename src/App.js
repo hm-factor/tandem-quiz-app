@@ -2,6 +2,7 @@ import './app.css';
 import data from './data.json';
 import { useState, useEffect } from 'react';
 import AnswerItem from './components/AnswerItem';
+import shuffle from './util/shuffle';
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -11,8 +12,8 @@ function App() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    console.log(questions)
-  }, [questions]);
+    console.log(score)
+  }, [score]);
 
   const tenRandQuestions = [];
 
@@ -44,15 +45,16 @@ function App() {
   if (begin && currData) {
 
     let possibleAnswers = [...currData.incorrect, currData.correct];
+    let shuffledAnswers = shuffle(possibleAnswers);
 
-    let answerItems = possibleAnswers.map( (data, idx) => {
+    let answerItems = shuffledAnswers.map( (data, idx) => {
       return (
         <AnswerItem 
           key={idx} 
           data={data} 
-          onClick={handleAnswer}
+          handleAnswer={handleAnswer}
           correct={currData.correct}
-          setScore/>
+          setScore={setScore}/>
       )
     });
 
@@ -67,7 +69,7 @@ function App() {
   } else if (end) {
     return (
       <div className="App">
-        <h1>Congrats you win</h1>
+        <h1>You got {score} many questions correct!</h1>
         {/* <button onClick={handleBegin}>Play Again?</button> */}
       </div>
     )

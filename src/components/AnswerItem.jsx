@@ -1,7 +1,14 @@
-const AnswerItem = ({data, onClick}) => {
+const AnswerItem = ({data, correct, handleAnswer, setScore}) => {
+
+  function handleAnswerPress() {
+    if(data === correct) {
+      setScore(score => score + 1);
+    };
+    handleAnswer();
+  };
 
   return (
-    <button className="answer-item" onClick={onClick}>
+    <button className="answer-item" onClick={handleAnswerPress}>
       {data}
     </button>
   );
