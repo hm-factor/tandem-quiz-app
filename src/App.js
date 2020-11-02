@@ -1,5 +1,5 @@
 import './app.css';
-import data from './data.json';
+import data from './util/data.json';
 import { useState, useEffect } from 'react';
 import AnswerItem from './components/AnswerItem';
 import shuffle from './util/shuffle';
