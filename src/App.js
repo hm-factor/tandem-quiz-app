@@ -21,6 +21,14 @@ function App() {
       if (!tenRandQuestions.includes(rand)) tenRandQuestions.push(rand);
     }
   }
+
+ function handleRestart() {
+    selectQuestions();
+    setQuestions(tenRandQuestions);
+    setCount(0);
+    setBegin(true);
+    setEnd(false);
+ }
   
   function handleBegin() {
     selectQuestions();
@@ -82,7 +90,7 @@ function App() {
     return (
       <div className="App">
         <h1>You got {score} out of 10 questions correct!</h1>
-        {/* <button onClick={handleBegin}>Play Again?</button> */}
+        <button onClick={handleRestart}>Play Again?</button>
       </div>
     )
   } else if (!begin) {
