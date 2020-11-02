@@ -1,9 +1,8 @@
-const AnswerItem = (props) => {
-  console.log(props);
+const AnswerItem = ({data, onClick}) => {
 
   return (
-    <button className="answer-item" onClick={props.onClick}>
-      {props.data}
+    <button className="answer-item" onClick={onClick}>
+      {data}
     </button>
   );
 };

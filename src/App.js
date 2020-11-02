@@ -8,6 +8,7 @@ function App() {
   const [begin, setBegin] = useState(false);
   const [count, setCount] = useState(0);
   const [end, setEnd] = useState(false);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     console.log(questions)
@@ -46,7 +47,12 @@ function App() {
 
     let answerItems = possibleAnswers.map( (data, idx) => {
       return (
-        <AnswerItem key={idx} data={data} onClick={handleAnswer}/>
+        <AnswerItem 
+          key={idx} 
+          data={data} 
+          onClick={handleAnswer}
+          correct={currData.correct}
+          setScore/>
       )
     });
 
