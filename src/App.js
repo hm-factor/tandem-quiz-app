@@ -10,6 +10,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [end, setEnd] = useState(false);
   const [score, setScore] = useState(0);
+  const [style, setStyle] = useState(false);
 
   useEffect(() => {
     console.log(score)
@@ -33,11 +34,17 @@ function App() {
   };
 
   function handleAnswer() {
-    setCount(count => count + 1);
+    // setCount(count => count + 1);
     if (count === 9) {
       setEnd(true);
       setBegin(false);
     };
+
+  }
+  
+  function handleReveal() {
+    setStyle(value => !value)
+
   }
 
   let currData = data[questions[count]];
@@ -48,13 +55,18 @@ function App() {
     let shuffledAnswers = shuffle(possibleAnswers);
 
     let answerItems = shuffledAnswers.map( (data, idx) => {
+    let truthValue = (data === currData.correct ? true : false);
+
       return (
         <AnswerItem 
           key={idx} 
           data={data} 
-          handleAnswer={handleAnswer}
-          correct={currData.correct}
-          setScore={setScore}/>
+          setScore={setScore}
+          truthValue={truthValue}
+          // handleAnswer={handleAnswer}
+          handleReveal={handleReveal}
+          style={style}
+          />
       )
     });
 

@@ -19,7 +19,6 @@
 .answer-item {
   transition: linear 0.2s;
   background-color: transparent;
-  border: 1px solid thistle;
   border-radius: 10px;
   margin: 5px;
   padding: 5px 10px;
@@ -30,4 +29,16 @@
 .answer-item:hover {
   transition: linear 0.2s;
   background-color: thistle;
+}
+
+.neutral {
+  border: 1px solid thistle;
+}
+
+.correct {
+  border: 1px solid green;
+}
+
+.incorrect {
+  border: 1px solid red;
 }

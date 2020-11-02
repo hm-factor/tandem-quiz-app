@@ -1,14 +1,17 @@
-const AnswerItem = ({data, correct, handleAnswer, setScore}) => {
+const AnswerItem = ({data, truthValue, handleReveal, setScore, style}) => {
+  
+  let truthBorder = (truthValue ? 'correct' : 'incorrect');
 
   function handleAnswerPress() {
-    if(data === correct) {
+    if(truthValue) {
       setScore(score => score + 1);
     };
-    handleAnswer();
+    handleReveal();
   };
 
+
   return (
-    <button className="answer-item" onClick={handleAnswerPress}>
+    <button className={`answer-item ${style ? truthBorder : 'neutral'}`} onClick={handleAnswerPress}>
       {data}
     </button>
   );
