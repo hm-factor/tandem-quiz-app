@@ -69,7 +69,7 @@ function App() {
   } else if (end) {
     return (
       <div className="App">
-        <h1>You got {score} many questions correct!</h1>
+        <h1>You got {score} out of 10 questions correct!</h1>
         {/* <button onClick={handleBegin}>Play Again?</button> */}
       </div>
     )
