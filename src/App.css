@@ -42,3 +42,11 @@
 .incorrect {
   border: 1px solid red;
 }
+
+.on {
+  display: block;
+}
+
+.off {
+  display: none;
+}

@@ -1,5 +1,5 @@
 const AnswerItem = ({data, truthValue, handleReveal, setScore, style}) => {
-  
+
   let truthBorder = (truthValue ? 'correct' : 'incorrect');
 
   function handleAnswerPress() {
@@ -9,9 +9,10 @@ const AnswerItem = ({data, truthValue, handleReveal, setScore, style}) => {
     handleReveal();
   };
 
-
+  // hacky way of disabling buttons after first click -- tether it to the styling
+  // because it is styled differently when exposing the answer, it works out
   return (
-    <button className={`answer-item ${style ? truthBorder : 'neutral'}`} onClick={handleAnswerPress}>
+    <button disabled={style} className={`answer-item ${style ? truthBorder : 'neutral'}`} onClick={handleAnswerPress}>
       {data}
     </button>
   );

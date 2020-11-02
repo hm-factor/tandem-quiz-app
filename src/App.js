@@ -6,6 +6,7 @@ import shuffle from './util/shuffle';
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]);
   const [begin, setBegin] = useState(false);
   const [count, setCount] = useState(0);
   const [end, setEnd] = useState(false);
@@ -17,7 +18,6 @@ function App() {
   }, [score]);
 
   const tenRandQuestions = [];
-
   function selectQuestions() {
     while (tenRandQuestions.length < 10) {
       let rand = Math.floor(Math.random() * Math.floor(data.length));
@@ -34,27 +34,31 @@ function App() {
   };
 
   function handleAnswer() {
-    // setCount(count => count + 1);
+    setCount(count => count + 1);
     if (count === 9) {
       setEnd(true);
       setBegin(false);
     };
-
+    setStyle(value => !value);
   }
   
   function handleReveal() {
     setStyle(value => !value)
-
   }
 
   let currData = data[questions[count]];
+  // the order of the answers kept switching after clicking on an answer
+  // with useEffect I can make it so that only happens when the question changes
+  useEffect(() => {
+    if (currData) {
+      let possibleAnswers = [...currData.incorrect, currData.correct];
+      let shuffledAnswers = shuffle(possibleAnswers);
+      setAnswers(shuffledAnswers);
+    }
+  }, [currData]);
 
   if (begin && currData) {
-
-    let possibleAnswers = [...currData.incorrect, currData.correct];
-    let shuffledAnswers = shuffle(possibleAnswers);
-
-    let answerItems = shuffledAnswers.map( (data, idx) => {
+    let answerItems = answers.map( (data, idx) => {
     let truthValue = (data === currData.correct ? true : false);
 
       return (
@@ -63,7 +67,6 @@ function App() {
           data={data} 
           setScore={setScore}
           truthValue={truthValue}
-          // handleAnswer={handleAnswer}
           handleReveal={handleReveal}
           style={style}
           />
@@ -76,6 +79,7 @@ function App() {
         <div className="answers-grid">
           {answerItems}
         </div>
+        <button className={`next-button ${style ? 'on' : 'off'}`} onClick={handleAnswer}>Next Question</button>
       </div>
     );
   } else if (end) {
