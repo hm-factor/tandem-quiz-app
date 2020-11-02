@@ -13,10 +13,6 @@ function App() {
   const [score, setScore] = useState(0);
   const [style, setStyle] = useState(false);
 
-  useEffect(() => {
-    console.log(score)
-  }, [score]);
-
   const tenRandQuestions = [];
   function selectQuestions() {
     while (tenRandQuestions.length < 10) {
