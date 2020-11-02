@@ -74,8 +74,8 @@ function App() {
         <h1 className="question-item">{currData.question}</h1>
         <div className="answers-grid">
           {answerItems}
+          <button className={`next-button ${style ? 'on' : 'off'}`} onClick={handleAnswer}>Next Question</button>
         </div>
-        <button className={`next-button ${style ? 'on' : 'off'}`} onClick={handleAnswer}>Next Question</button>
       </div>
     );
   } else if (end) {

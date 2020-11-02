@@ -1,14 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond");
+
 .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'EB Garamond';
+}
+
+.begin {
+  transition: linear 0.2s;
+  background: transparent;
+  border: 2px solid thistle;
+  border-radius: 10px;
+  font-size: 36px;
+  padding: 15px;
+  font-family: 'EB Garamond'
+}
+.begin:hover {
+  transition: linear 0.2s;
+  background: thistle;
 }
 
 .question-item {
   display: flex;
   justify-self: center;
+  font-family: 'EB Garamond'
 }
 
 .answers-grid {
@@ -16,7 +34,7 @@
   flex-direction: column;
 }
 
-.answer-item {
+.answer-item, .next-button {
   transition: linear 0.2s;
   background-color: transparent;
   border-radius: 10px;
@@ -24,21 +42,23 @@
   padding: 5px 10px;
   font-size: 16px;
   outline: none;
+  font-family: 'EB Garamond'
 }
-
-.answer-item:hover {
+.answer-item:hover, .next-button:hover {
   transition: linear 0.2s;
   background-color: thistle;
+}
+
+.next-button {
+  border: 1px solid thistle;
 }
 
 .neutral {
   border: 1px solid thistle;
 }
-
 .correct {
   border: 1px solid green;
 }
-
 .incorrect {
   border: 1px solid red;
 }
@@ -46,7 +66,6 @@
 .on {
   display: block;
 }
-
 .off {
   display: none;
 }
