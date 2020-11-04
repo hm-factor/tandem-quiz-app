@@ -1,11 +1,16 @@
 Welcome to my Quiz App for Tandem's Apprenticeship Program.
 
+Here you will find your class React app which takes advantage of the oh so wonderful Hooks!
 
-### `npm start`
+To start it up locally, you should clone the repo down and then in the terminal of your preferred editor, usher the classic commands into the void as follows: 
 
-Runs the app in the development mode.\
+`npm install` and
+
+`npm start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
+`Note`
+
+There is a chance the `app.css` is not capitalized in the import statement in `App.js`. If that is the case, kindly capitalize both the file in the tree and import statements. A fix has been pushed to solve this issue.
