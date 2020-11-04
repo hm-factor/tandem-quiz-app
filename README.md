@@ -1,6 +1,6 @@
 ### `Quiz App for Tandem Apprenticeship`
 
-Here you will find your class React app which takes advantage of the oh so wonderful Hooks!
+Here you will find a lovely little app built with React and their Hooks!
 
 To start it up locally, you should clone the repo down and then in the terminal of your preferred editor, usher the classic commands into the void as follows: 
 
