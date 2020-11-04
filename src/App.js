@@ -1,4 +1,4 @@
-import './app.css';
+import './App.css';
 import data from './util/data.json';
 import { useState, useEffect } from 'react';
 import AnswerItem from './components/AnswerItem';
