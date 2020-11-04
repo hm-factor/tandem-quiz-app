@@ -1,4 +1,4 @@
-Welcome to my Quiz App for Tandem's Apprenticeship Program.
+### `Quiz App for Tandem Apprenticeship`
 
 Here you will find your class React app which takes advantage of the oh so wonderful Hooks!
 
