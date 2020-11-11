@@ -2,6 +2,7 @@ import './App.css';
 import data from './util/data.json';
 import { useState, useEffect } from 'react';
 import AnswerItem from './components/AnswerItem';
+import QueryItem from './components/QueryItem';
 import shuffle from './util/shuffle';
 
 function App() {
@@ -51,7 +52,11 @@ function App() {
     setStyle(value => !value)
   }
 
+  // using tandems json
   let currData = data[questions[count]];
+
+  // using useQuery
+
   // the order of the answers kept switching after clicking on an answer
   // with useEffect I can make it so that only happens when the question changes
   useEffect(() => {
@@ -63,6 +68,7 @@ function App() {
   }, [currData]);
 
   if (begin && currData) {
+
     let answerItems = answers.map( (data, idx) => {
     let truthValue = (data === currData.correct ? true : false);
 
@@ -86,6 +92,7 @@ function App() {
           <button className={`next-button ${style ? 'on' : 'off'}`} onClick={handleAnswer}>Next Question</button>
         </div>
         <div className="score">{`${score}/10`}</div>
+        {/* <QueryItem/> */}
       </div>
     );
   } else if (end) {
